@@ -1,3 +1,4 @@
+
 import json
 import os
 import re
@@ -550,9 +551,45 @@ def _extract_work_type(
 # Deterministic area extraction
 # -------------------------------------------------------------------
 
+def _extract_labeled_value(
+    text: str,
+    label: str,
+) -> Optional[str]:
+
+    match = re.search(
+        rf"^\s*{re.escape(label)}\s*:\s*(.+?)\s*$",
+        text,
+        flags=(
+            re.IGNORECASE
+            | re.MULTILINE
+        ),
+    )
+
+    if not match:
+        return None
+
+    value = (
+        match.group(1)
+        .strip()
+        .rstrip(".,;")
+    )
+
+    return value or None
+
+
 def _extract_area(
     text: str,
 ) -> Optional[str]:
+
+    labeled_area = (
+        _extract_labeled_value(
+            text,
+            "Area",
+        )
+    )
+
+    if labeled_area:
+        return labeled_area
 
     rack_match = re.search(
         r"\brack\s+row\s+"
@@ -581,6 +618,43 @@ def _extract_area(
             f"Area "
             f"{area_match.group(1)}"
         )
+
+    return None
+
+
+def _extract_discipline(
+    text: str,
+) -> Optional[str]:
+
+    labeled_discipline = (
+        _extract_labeled_value(
+            text,
+            "Discipline",
+        )
+    )
+
+    if labeled_discipline:
+        return labeled_discipline
+
+    lower_text = text.lower()
+
+    discipline_aliases = [
+        ("civil", "Civil"),
+        ("piping", "Piping"),
+        ("pipeline", "Piping"),
+        ("mechanical", "Mechanical"),
+        ("electrical", "Electrical"),
+        ("instrumentation", "Instrumentation"),
+        ("structural", "Structural"),
+    ]
+
+    for keyword, value in discipline_aliases:
+        if re.search(
+            rf"\b{re.escape(keyword)}\b",
+            lower_text,
+            flags=re.IGNORECASE,
+        ):
+            return value
 
     return None
 
@@ -736,7 +810,12 @@ def _extract_deterministic_evidence(
             )
         ),
         area=detected_area,
-        discipline=discipline,
+        discipline=(
+            discipline
+            or _extract_discipline(
+                text
+            )
+        ),
         progress_state=(
             _extract_progress_state(
                 text
@@ -1287,3 +1366,5 @@ def extract_field_event(
         )
 
         return final_result
+		
+		

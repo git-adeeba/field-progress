@@ -783,6 +783,26 @@ def generate_activity_matches(
         guardrail["margin"],
     )
 
+    print(
+        "[MATCHING] Semantic score:",
+        guardrail["semantic_score"],
+    )
+
+    print(
+        "[MATCHING] Context score:",
+        guardrail["context_score"],
+    )
+
+    print(
+        "[MATCHING] Guardrail checks:",
+        guardrail["checks"],
+    )
+
+    print(
+        "[MATCHING] Guardrail reason:",
+        guardrail["reason"],
+    )
+
     # ---------------------------------------------------------------
     # Store candidate matches
     # ---------------------------------------------------------------
