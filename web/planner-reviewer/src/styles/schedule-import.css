@@ -1,0 +1,978 @@
+.schedule-v1-toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  
+  .schedule-v1-import-button,
+  .schedule-v1-import-empty-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  
+    min-height: 39px;
+    padding: 0 14px;
+  
+    border: 1px solid #25344a;
+    border-radius: 8px;
+  
+    background: #25344a;
+    color: #ffffff;
+  
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+  
+    cursor: pointer;
+  }
+  
+  
+  .schedule-v1-import-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  
+  
+  .schedule-v1-import-empty-button {
+    margin-top: 8px;
+  }
+  
+  
+  /* =========================================================
+     BACKDROP / MODAL
+     ========================================================= */
+  
+  .schedule-v1-import-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+  
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  
+    padding: 35px 20px;
+  
+    overflow-y: auto;
+  
+    background:
+      rgba(18, 27, 40, 0.52);
+  
+    backdrop-filter:
+      blur(3px);
+  }
+  
+  
+  .schedule-v1-import-modal {
+    width: min(
+      1020px,
+      100%
+    );
+  
+    overflow: hidden;
+  
+    background: #ffffff;
+  
+    border: 1px solid
+      #e2e7ed;
+  
+    border-radius: 14px;
+  
+    box-shadow:
+      0 25px 80px
+      rgba(15, 23, 42, 0.25);
+  }
+  
+  
+  .schedule-v1-import-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  
+    padding: 22px 24px 18px;
+  
+    border-bottom:
+      1px solid #e9edf2;
+  }
+  
+  
+  .schedule-v1-import-head > div > span,
+  .schedule-v1-preview-title > div > span,
+  .schedule-v1-import-project > div:first-child > span,
+  .schedule-v1-import-success > span {
+    display: block;
+  
+    color: #758196;
+  
+    font-size: 10px;
+    font-weight: 800;
+  
+    letter-spacing: 0.1em;
+  
+    text-transform: uppercase;
+  }
+  
+  
+  .schedule-v1-import-head h2 {
+    margin:
+      5px 0 5px;
+  
+    color: #202c3d;
+  
+    font-size: 22px;
+  
+    letter-spacing:
+      -0.025em;
+  }
+  
+  
+  .schedule-v1-import-head p {
+    margin: 0;
+  
+    color: #7c8798;
+  
+    font-size: 12px;
+  }
+  
+  
+  .schedule-v1-import-close {
+    width: 34px;
+    height: 34px;
+  
+    display: grid;
+    place-items: center;
+  
+    flex: 0 0 auto;
+  
+    border: 1px solid
+      #e0e5eb;
+  
+    border-radius: 8px;
+  
+    background: #ffffff;
+    color: #6d7889;
+  
+    cursor: pointer;
+  }
+  
+  
+  /* =========================================================
+     PROJECT + FORMAT BAR
+     ========================================================= */
+  
+  .schedule-v1-import-project {
+    margin: 18px 24px;
+  
+    padding: 12px 14px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 15px;
+  
+    border: 1px solid
+      #e4e9ef;
+  
+    border-radius: 9px;
+  
+    background: #f8fafc;
+  }
+  
+  
+  .schedule-v1-import-project
+    > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  
+  .schedule-v1-import-project
+    > div:first-child
+    strong {
+    color: #293548;
+  
+    font-size: 12px;
+  }
+  
+  
+  .schedule-v1-import-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  
+  .schedule-v1-import-formats
+    > span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  
+    padding: 5px 8px;
+  
+    border: 1px solid
+      #dfe5ec;
+  
+    border-radius: 6px;
+  
+    background: #ffffff;
+  
+    color: #6d7888;
+  
+    font-size: 10px;
+  }
+  
+  
+  .schedule-v1-import-formats
+    strong {
+    color: #344256;
+  }
+  
+  
+  /* =========================================================
+     DROP ZONE
+     ========================================================= */
+  
+  .schedule-v1-import-drop {
+    min-height: 205px;
+  
+    margin: 0 24px 16px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    text-align: center;
+  
+    border: 1.5px dashed
+      #bcc5d1;
+  
+    border-radius: 11px;
+  
+    background: #ffffff;
+  
+    cursor: pointer;
+  
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease;
+  }
+  
+  
+  .schedule-v1-import-drop:hover,
+  .schedule-v1-import-drop.dragging {
+    border-color: #64748b;
+  
+    background: #f8fafc;
+  }
+  
+  
+  .schedule-v1-import-upload-icon {
+    width: 43px;
+    height: 43px;
+  
+    display: grid;
+    place-items: center;
+  
+    margin-bottom: 9px;
+  
+    border-radius: 9px;
+  
+    background: #eef2f6;
+  
+    color: #4d5c70;
+  }
+  
+  
+  .schedule-v1-import-drop
+    > strong {
+    color: #293548;
+  
+    font-size: 14px;
+  }
+  
+  
+  .schedule-v1-import-drop p {
+    margin: 5px 0;
+  
+    color: #818b99;
+  
+    font-size: 12px;
+  }
+  
+  
+  .schedule-v1-import-drop small {
+    color: #9aa3af;
+  
+    font-size: 10px;
+  }
+  
+  
+  /* =========================================================
+     SELECTED FILE
+     ========================================================= */
+  
+  .schedule-v1-import-file {
+    margin: 0 24px 16px;
+  
+    padding: 11px 12px;
+  
+    display: flex;
+    align-items: center;
+  
+    gap: 11px;
+  
+    border: 1px solid
+      #e0e5eb;
+  
+    border-radius: 9px;
+  }
+  
+  
+  .schedule-v1-import-file
+    > div:first-child {
+    width: 39px;
+    height: 39px;
+  
+    display: grid;
+    place-items: center;
+  
+    border-radius: 7px;
+  
+    background: #eef2f6;
+  
+    color: #536276;
+  }
+  
+  
+  .schedule-v1-import-file
+    section {
+    flex: 1;
+  
+    display: flex;
+    flex-direction: column;
+  
+    gap: 2px;
+  }
+  
+  
+  .schedule-v1-import-file
+    section strong {
+    color: #293548;
+  
+    font-size: 12px;
+  }
+  
+  
+  .schedule-v1-import-file
+    section span {
+    color: #87919f;
+  
+    font-size: 10px;
+  }
+  
+  
+  .schedule-v1-import-file
+    button {
+    border: 0;
+  
+    background: transparent;
+  
+    color: #a04b46;
+  
+    font-size: 11px;
+    font-weight: 700;
+  
+    cursor: pointer;
+  }
+  
+  
+  /* =========================================================
+     ERROR
+     ========================================================= */
+  
+  .schedule-v1-import-error {
+    margin: 0 24px 16px;
+  
+    padding: 10px 12px;
+  
+    display: flex;
+    flex-direction: column;
+  
+    gap: 3px;
+  
+    border: 1px solid
+      #f1d1ce;
+  
+    border-radius: 8px;
+  
+    background: #fff5f4;
+  
+    color: #9e403b;
+  
+    font-size: 11px;
+  }
+  
+  
+  /* =========================================================
+     ACTION BUTTONS
+     ========================================================= */
+  
+  .schedule-v1-import-actions {
+    padding: 0 24px 22px;
+  
+    display: flex;
+    justify-content: flex-end;
+  
+    gap: 8px;
+  }
+  
+  
+  .schedule-v1-import-actions
+    button {
+    min-height: 38px;
+  
+    padding: 0 14px;
+  
+    border-radius: 7px;
+  
+    font: inherit;
+    font-size: 11px;
+    font-weight: 700;
+  
+    cursor: pointer;
+  }
+  
+  
+  .schedule-v1-import-actions
+    .secondary {
+    border: 1px solid
+      #dce2e9;
+  
+    background: #ffffff;
+  
+    color: #536174;
+  }
+  
+  
+  .schedule-v1-import-actions
+    .primary {
+    border: 1px solid
+      #26364c;
+  
+    background: #26364c;
+  
+    color: #ffffff;
+  }
+  
+  
+  .schedule-v1-import-actions
+    button:disabled {
+    opacity: 0.45;
+  
+    cursor: not-allowed;
+  }
+  
+  
+  /* =========================================================
+     PREVIEW
+     ========================================================= */
+  
+  .schedule-v1-preview {
+    padding-top: 18px;
+  
+    border-top:
+      1px solid #e9edf2;
+  }
+  
+  
+  .schedule-v1-preview-title {
+    padding: 0 24px 14px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 15px;
+  }
+  
+  
+  .schedule-v1-preview-title h3 {
+    margin: 4px 0 0;
+  
+    color: #263246;
+  
+    font-size: 18px;
+  }
+  
+  
+  .schedule-v1-preview-valid,
+  .schedule-v1-preview-invalid {
+    padding: 6px 9px;
+  
+    border-radius: 100px;
+  
+    font-size: 10px;
+    font-weight: 800;
+  }
+  
+  
+  .schedule-v1-preview-valid {
+    background: #eaf6ef;
+  
+    color: #287249;
+  }
+  
+  
+  .schedule-v1-preview-invalid {
+    background: #fff0ef;
+  
+    color: #a93e38;
+  }
+  
+  
+  .schedule-v1-preview-stats {
+    padding: 0 24px 16px;
+  
+    display: grid;
+  
+    grid-template-columns:
+      repeat(
+        6,
+        minmax(0, 1fr)
+      );
+  
+    gap: 7px;
+  }
+  
+  
+  .schedule-v1-preview-stats
+    > div {
+    padding: 9px;
+  
+    border: 1px solid
+      #e2e7ed;
+  
+    border-radius: 8px;
+  
+    background: #ffffff;
+  }
+  
+  
+  .schedule-v1-preview-stats span {
+    display: block;
+  
+    margin-bottom: 4px;
+  
+    color: #818b99;
+  
+    font-size: 9px;
+  }
+  
+  
+  .schedule-v1-preview-stats strong {
+    color: #263246;
+  
+    font-size: 18px;
+  }
+  
+  
+  /* =========================================================
+     VALIDATION ISSUES
+     ========================================================= */
+  
+  .schedule-v1-preview-issues {
+    margin: 0 24px 14px;
+  
+    padding: 10px 12px;
+  
+    border-radius: 8px;
+  
+    font-size: 11px;
+  }
+  
+  
+  .schedule-v1-preview-issues
+    > strong {
+    display: block;
+  
+    margin-bottom: 5px;
+  }
+  
+  
+  .schedule-v1-preview-issues p {
+    margin: 3px 0;
+  }
+  
+  
+  .schedule-v1-preview-issues.error {
+    border: 1px solid
+      #f0d0cd;
+  
+    background: #fff4f3;
+  
+    color: #9e403b;
+  }
+  
+  
+  .schedule-v1-preview-issues.warning {
+    border: 1px solid
+      #eadcae;
+  
+    background: #fffaf0;
+  
+    color: #80641f;
+  }
+  
+  
+  /* =========================================================
+     PREVIEW TABLE
+     ========================================================= */
+  
+  .schedule-v1-preview-table-wrap {
+    max-height: 320px;
+  
+    margin: 0 24px 14px;
+  
+    overflow: auto;
+  
+    border: 1px solid
+      #e1e6ec;
+  
+    border-radius: 8px;
+  }
+  
+  
+  .schedule-v1-preview-table {
+    width: 100%;
+  
+    border-collapse:
+      collapse;
+  }
+  
+  
+  .schedule-v1-preview-table th {
+    position: sticky;
+    top: 0;
+  
+    z-index: 1;
+  
+    padding: 9px 11px;
+  
+    text-align: left;
+  
+    background: #f7f9fb;
+  
+    border-bottom:
+      1px solid #e3e8ee;
+  
+    color: #748094;
+  
+    font-size: 9px;
+    font-weight: 800;
+  
+    letter-spacing: 0.05em;
+  
+    text-transform: uppercase;
+  
+    white-space: nowrap;
+  }
+  
+  
+  .schedule-v1-preview-table td {
+    padding: 9px 11px;
+  
+    border-bottom:
+      1px solid #edf0f4;
+  
+    color: #596577;
+  
+    font-size: 10px;
+  
+    white-space: nowrap;
+  }
+  
+  
+  .schedule-v1-preview-table
+    td:first-child
+    strong,
+  .schedule-v1-preview-table
+    td:first-child
+    span {
+    display: block;
+  }
+  
+  
+  .schedule-v1-preview-table
+    td:first-child
+    strong {
+    margin-bottom: 2px;
+  
+    color: #2d394c;
+  }
+  
+  
+  /* =========================================================
+     RELATIONSHIPS
+     ========================================================= */
+  
+  .schedule-v1-preview-relations {
+    margin: 0 24px 16px;
+  
+    padding: 10px 12px;
+  
+    border: 1px solid
+      #e1e6ec;
+  
+    border-radius: 8px;
+  }
+  
+  
+  .schedule-v1-preview-relations
+    summary {
+    color: #596577;
+  
+    font-size: 11px;
+    font-weight: 700;
+  
+    cursor: pointer;
+  }
+  
+  
+  .schedule-v1-preview-relations
+    > div {
+    margin-top: 10px;
+  
+    display: grid;
+  
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  
+    gap: 6px;
+  }
+  
+  
+  .schedule-v1-preview-relations
+    section {
+    padding: 7px 9px;
+  
+    display: flex;
+    align-items: center;
+  
+    gap: 7px;
+  
+    border-radius: 6px;
+  
+    background: #f7f9fb;
+  
+    color: #536174;
+  
+    font-size: 10px;
+  }
+  
+  
+  .schedule-v1-preview-relations
+    section span {
+    color: #8a94a2;
+  }
+  
+  
+  /* =========================================================
+     SUCCESS
+     ========================================================= */
+  
+  .schedule-v1-import-success {
+    min-height: 390px;
+  
+    padding: 42px 25px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    text-align: center;
+  }
+  
+  
+  .schedule-v1-import-success
+    > div:first-child {
+    width: 56px;
+    height: 56px;
+  
+    display: grid;
+    place-items: center;
+  
+    margin-bottom: 13px;
+  
+    border-radius: 50%;
+  
+    background: #eaf6ef;
+  
+    color: #287249;
+  }
+  
+  
+  .schedule-v1-import-success h3 {
+    margin: 5px 0 6px;
+  
+    color: #253247;
+  
+    font-size: 21px;
+  }
+  
+  
+  .schedule-v1-import-success p {
+    max-width: 480px;
+  
+    margin: 0;
+  
+    color: #7b8696;
+  
+    font-size: 12px;
+  }
+  
+  
+  .schedule-v1-import-result {
+    width: 100%;
+    max-width: 640px;
+  
+    margin: 23px 0;
+  
+    display: grid;
+  
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(0, 1fr)
+      );
+  
+    gap: 8px;
+  }
+  
+  
+  .schedule-v1-import-result
+    > div {
+    padding: 12px;
+  
+    border: 1px solid
+      #e1e6ec;
+  
+    border-radius: 8px;
+  }
+  
+  
+  .schedule-v1-import-result strong {
+    display: block;
+  
+    margin-bottom: 3px;
+  
+    color: #253247;
+  
+    font-size: 20px;
+  }
+  
+  
+  .schedule-v1-import-result span {
+    color: #7c8797;
+  
+    font-size: 9px;
+  }
+  
+  
+  .schedule-v1-import-success-button {
+    min-height: 39px;
+  
+    padding: 0 16px;
+  
+    border: 1px solid
+      #26364c;
+  
+    border-radius: 7px;
+  
+    background: #26364c;
+  
+    color: #ffffff;
+  
+    font: inherit;
+    font-size: 11px;
+    font-weight: 700;
+  
+    cursor: pointer;
+  }
+  
+  
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+  
+  @media (
+    max-width: 900px
+  ) {
+    .schedule-v1-toolbar-actions,
+    .schedule-v1-import-project {
+      align-items: stretch;
+  
+      flex-direction: column;
+    }
+  
+    .schedule-v1-preview-stats {
+      grid-template-columns:
+        repeat(3, 1fr);
+    }
+  }
+  
+  
+  @media (
+    max-width: 620px
+  ) {
+    .schedule-v1-import-backdrop {
+      padding: 10px;
+    }
+  
+    .schedule-v1-import-head {
+      padding: 17px;
+    }
+  
+    .schedule-v1-import-project,
+    .schedule-v1-import-drop,
+    .schedule-v1-import-file,
+    .schedule-v1-import-error,
+    .schedule-v1-preview-table-wrap,
+    .schedule-v1-preview-relations {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  
+    .schedule-v1-preview-title,
+    .schedule-v1-preview-stats,
+    .schedule-v1-import-actions {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  
+    .schedule-v1-preview-stats,
+    .schedule-v1-import-result,
+    .schedule-v1-preview-relations
+      > div {
+      grid-template-columns:
+        1fr;
+    }
+  
+    .schedule-v1-import-actions {
+      flex-direction: column;
+    }
+  
+    .schedule-v1-import-actions
+      button {
+      width: 100%;
+    }
+  }

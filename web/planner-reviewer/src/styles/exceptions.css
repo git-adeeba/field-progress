@@ -1,0 +1,1297 @@
+/* =========================================================
+   REALITY VS PLAN — EXCEPTIONS
+========================================================= */
+
+.exceptions-page {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 18px;
+  }
+  
+  
+  /* =========================================================
+     PROJECT TOOLBAR
+  ========================================================= */
+  
+  .exceptions-toolbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  
+    gap: 18px;
+  
+    padding: 18px 20px;
+  
+    border:
+      1px solid
+      var(--border);
+  
+    border-radius: 15px;
+  
+    background: #ffffff;
+  
+    box-shadow:
+      var(--shadow-xs);
+  }
+  
+  
+  .exceptions-project-selector {
+    min-width: 330px;
+  
+    display: flex;
+    flex-direction: column;
+  
+    gap: 7px;
+  }
+  
+  
+  .exceptions-project-selector > span {
+    color: #718096;
+  
+    font-size: 10px;
+    font-weight: 700;
+  
+    letter-spacing: 0.55px;
+  
+    text-transform: uppercase;
+  }
+  
+  
+  .exceptions-project-selector select {
+    width: 100%;
+    height: 42px;
+  
+    padding:
+      0
+      12px;
+  
+    color: #25324a;
+  
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  
+  .exceptions-refresh-button {
+    height: 42px;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 8px;
+  
+    padding:
+      0
+      15px;
+  
+    border:
+      1px solid
+      #dfe5ee;
+  
+    border-radius: 10px;
+  
+    background: white;
+  
+    color: #475569;
+  
+    font-size: 11px;
+    font-weight: 600;
+  }
+  
+  
+  .exceptions-refresh-button:hover:not(:disabled) {
+    border-color:
+      #c7d2fe;
+  
+    background:
+      #f8faff;
+  
+    color:
+      var(--primary);
+  }
+  
+  
+  .exceptions-refresh-button:disabled {
+    cursor: default;
+  
+    opacity: 0.55;
+  }
+  
+  
+  /* =========================================================
+     ERROR
+  ========================================================= */
+  
+  .exceptions-error {
+    display: flex;
+    align-items: center;
+  
+    gap: 9px;
+  
+    padding:
+      12px
+      14px;
+  
+    border:
+      1px solid
+      #fecdd3;
+  
+    border-radius: 10px;
+  
+    background:
+      #fff1f2;
+  
+    color:
+      #be123c;
+  
+    font-size: 11px;
+  }
+  
+  
+  /* =========================================================
+     SUMMARY
+  ========================================================= */
+  
+  .exceptions-summary-grid {
+    display: grid;
+  
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  
+    gap: 12px;
+  }
+  
+  
+  .exception-summary-card {
+    min-width: 0;
+  
+    display: flex;
+    align-items: flex-start;
+  
+    gap: 13px;
+  
+    padding: 18px;
+  
+    border:
+      1px solid
+      #e3e8f1;
+  
+    border-radius: 15px;
+  
+    background:
+      white;
+  
+    box-shadow:
+      0 5px 18px
+      rgba(
+        15,
+        23,
+        42,
+        0.025
+      );
+  }
+  
+  
+  .exception-summary-icon {
+    flex:
+      0
+      0
+      41px;
+  
+    width: 41px;
+    height: 41px;
+  
+    display: grid;
+    place-items: center;
+  
+    border-radius: 11px;
+  }
+  
+  
+  .exception-summary-icon.total {
+    background:
+      #eef1ff;
+  
+    color:
+      #5c69e8;
+  }
+  
+  
+  .exception-summary-icon.critical {
+    background:
+      #fff1f2;
+  
+    color:
+      #e11d48;
+  }
+  
+  
+  .exception-summary-icon.high {
+    background:
+      #fff7ed;
+  
+    color:
+      #ea580c;
+  }
+  
+  
+  .exception-summary-icon.medium {
+    background:
+      #fffbeb;
+  
+    color:
+      #d97706;
+  }
+  
+  
+  .exception-summary-card > div:last-child {
+    min-width: 0;
+  }
+  
+  
+  .exception-summary-card span {
+    display: block;
+  
+    color:
+      #64748b;
+  
+    font-size: 11px;
+    font-weight: 500;
+  }
+  
+  
+  .exception-summary-card strong {
+    display: block;
+  
+    margin-top: 4px;
+  
+    color:
+      #172033;
+  
+    font-family:
+      "Manrope",
+      sans-serif;
+  
+    font-size: 26px;
+    font-weight: 800;
+  
+    letter-spacing:
+      -0.65px;
+  }
+  
+  
+  .exception-summary-card p {
+    margin:
+      5px
+      0
+      0;
+  
+    color:
+      #94a3b8;
+  
+    font-size: 10px;
+    line-height: 1.5;
+  }
+  
+  
+  /* =========================================================
+     FILTERS
+  ========================================================= */
+  
+  .exceptions-filter-panel {
+    display: grid;
+  
+    grid-template-columns:
+      minmax(
+        300px,
+        1fr
+      )
+      auto
+      auto
+      auto;
+  
+    gap: 9px;
+  
+    padding: 13px;
+  
+    border:
+      1px solid
+      var(--border);
+  
+    border-radius: 14px;
+  
+    background:
+      #fafbfd;
+  }
+  
+  
+  .exceptions-search {
+    height: 40px;
+  
+    display: flex;
+    align-items: center;
+  
+    gap: 9px;
+  
+    padding:
+      0
+      12px;
+  
+    border:
+      1px solid
+      #dfe5ee;
+  
+    border-radius: 9px;
+  
+    background: white;
+  
+    color:
+      #94a3b8;
+  }
+  
+  
+  .exceptions-search:focus-within {
+    border-color:
+      rgba(
+        83,
+        103,
+        248,
+        0.5
+      );
+  
+    box-shadow:
+      0 0 0 3px
+      rgba(
+        83,
+        103,
+        248,
+        0.08
+      );
+  }
+  
+  
+  .exceptions-search input {
+    width: 100%;
+  
+    border: 0;
+  
+    background:
+      transparent;
+  
+    box-shadow: none;
+  
+    color:
+      #1e293b;
+  
+    font-size: 11px;
+  }
+  
+  
+  .exceptions-search input:focus {
+    box-shadow: none;
+  }
+  
+  
+  .exceptions-filter-panel > select {
+    min-width: 145px;
+  
+    height: 40px;
+  
+    padding:
+      0
+      11px;
+  
+    color:
+      #475569;
+  
+    font-size: 10.5px;
+    font-weight: 500;
+  }
+  
+  
+  /* =========================================================
+     EXCEPTION WORKSPACE
+  ========================================================= */
+  
+  .exceptions-list-section {
+    overflow: hidden;
+  
+    border:
+      1px solid
+      #dde4ee;
+  
+    border-radius: 17px;
+  
+    background:
+      white;
+  
+    box-shadow:
+      0 6px 22px
+      rgba(
+        15,
+        23,
+        42,
+        0.03
+      );
+  }
+  
+  
+  .exceptions-list-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 16px;
+  
+    padding:
+      20px;
+  
+    border-bottom:
+      1px solid
+      #edf1f6;
+  }
+  
+  
+  .exceptions-list-heading > div > span {
+    color:
+      #6477df;
+  
+    font-size: 9px;
+    font-weight: 700;
+  
+    letter-spacing:
+      0.6px;
+  
+    text-transform:
+      uppercase;
+  }
+  
+  
+  .exceptions-list-heading h2 {
+    margin:
+      5px
+      0
+      0;
+  
+    font-size: 17px;
+  }
+  
+  
+  .exceptions-list-heading > strong {
+    padding:
+      6px
+      10px;
+  
+    border-radius:
+      999px;
+  
+    background:
+      #f1f5f9;
+  
+    color:
+      #64748b;
+  
+    font-size: 10px;
+    font-weight: 600;
+  }
+  
+  
+  /* =========================================================
+     TABLE
+  ========================================================= */
+  
+  .exceptions-table-wrap {
+    overflow-x: auto;
+  }
+  
+  
+  .exceptions-table {
+    min-width: 1160px;
+  
+    table-layout: auto;
+  }
+  
+  
+  .exceptions-table th {
+    height: 46px;
+  
+    padding:
+      0
+      14px;
+  
+    background:
+      #fbfcfe;
+  
+    color:
+      #64748b;
+  
+    font-size: 9.5px;
+  
+    letter-spacing:
+      0.35px;
+  }
+  
+  
+  .exceptions-table td {
+    padding:
+      15px
+      14px;
+  
+    vertical-align:
+      middle;
+  
+    color:
+      #334155;
+  
+    font-size: 11.5px;
+  }
+  
+  
+  .exceptions-table tbody tr:hover {
+    background:
+      #fafcff;
+  }
+  
+  
+  .exception-main-cell {
+    min-width: 360px;
+  
+    display: flex;
+    align-items: flex-start;
+  
+    gap: 11px;
+  }
+  
+  
+  .exception-type-icon {
+    flex:
+      0
+      0
+      36px;
+  
+    width: 36px;
+    height: 36px;
+  
+    display: grid;
+    place-items: center;
+  
+    border-radius: 10px;
+  
+    background:
+      #f1f5f9;
+  
+    color:
+      #64748b;
+  }
+  
+  
+  .exception-type-icon.behind_plan {
+    background:
+      #fff1f2;
+  
+    color:
+      #e11d48;
+  }
+  
+  
+  .exception-type-icon.ahead_of_plan {
+    background:
+      #ecfdf5;
+  
+    color:
+      #059669;
+  }
+  
+  
+  .exception-type-icon.blocked_activity {
+    background:
+      #fff7ed;
+  
+    color:
+      #ea580c;
+  }
+  
+  
+  .exception-type-icon.missing_update {
+    background:
+      #fffbeb;
+  
+    color:
+      #d97706;
+  }
+  
+  
+  .exception-type-icon.unplanned_work {
+    background:
+      #f5f3ff;
+  
+    color:
+      #7c3aed;
+  }
+  
+  
+  .exception-type-icon.sequence_deviation,
+  .exception-type-icon.progress_stagnation,
+  .exception-type-icon.rework {
+    background:
+      #eff6ff;
+  
+    color:
+      #2563eb;
+  }
+  
+  
+  .exception-main-cell > div:last-child {
+    min-width: 0;
+  }
+  
+  
+  .exception-main-cell strong {
+    display: block;
+  
+    color:
+      #1f2b41;
+  
+    font-size: 12.5px;
+    font-weight: 700;
+  
+    line-height: 1.35;
+  }
+  
+  
+  .exception-main-cell span {
+    display: block;
+  
+    margin-top: 4px;
+  
+    color:
+      #5f6fd2;
+  
+    font-size: 10px;
+    font-weight: 600;
+  }
+  
+  
+  .exception-main-cell p {
+    max-width: 520px;
+  
+    margin:
+      5px
+      0
+      0;
+  
+    color:
+      #7b8799;
+  
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+  
+  
+  .exception-progress-cell {
+    white-space: nowrap;
+  
+    color:
+      #334155;
+  
+    font-weight: 600;
+  }
+  
+  
+  .exception-date-cell {
+    min-width: 145px;
+  
+    color:
+      #64748b;
+  
+    line-height: 1.4;
+  }
+  
+  
+  /* =========================================================
+     BADGES
+  ========================================================= */
+  
+  .exception-severity-badge,
+  .exception-status-badge {
+    display: inline-flex;
+    align-items: center;
+  
+    padding:
+      5px
+      8px;
+  
+    border-radius:
+      999px;
+  
+    font-size: 9.5px;
+    font-weight: 700;
+  
+    text-transform:
+      capitalize;
+  }
+  
+  
+  .exception-severity-badge.critical {
+    background:
+      #fff1f2;
+  
+    color:
+      #be123c;
+  }
+  
+  
+  .exception-severity-badge.high {
+    background:
+      #fff7ed;
+  
+    color:
+      #c2410c;
+  }
+  
+  
+  .exception-severity-badge.medium {
+    background:
+      #fffbeb;
+  
+    color:
+      #b45309;
+  }
+  
+  
+  .exception-severity-badge.low {
+    background:
+      #eff6ff;
+  
+    color:
+      #2563eb;
+  }
+  
+  
+  .exception-status-badge.open {
+    background:
+      #fff7ed;
+  
+    color:
+      #c2410c;
+  }
+  
+  
+  .exception-status-badge.resolved {
+    background:
+      #ecfdf5;
+  
+    color:
+      #047857;
+  }
+  
+  
+  /* =========================================================
+     VARIANCE
+  ========================================================= */
+  
+  .exception-positive-variance {
+    color:
+      #059669;
+  
+    font-size: 11.5px;
+    font-weight: 700;
+  
+    white-space: nowrap;
+  }
+  
+  
+  .exception-negative-variance {
+    color:
+      #e11d48;
+  
+    font-size: 11.5px;
+    font-weight: 700;
+  
+    white-space: nowrap;
+  }
+  
+  
+  /* =========================================================
+     RESOLVE
+  ========================================================= */
+  
+  .exception-resolve-button {
+    height: 33px;
+  
+    padding:
+      0
+      11px;
+  
+    border:
+      1px solid
+      #dbe2ee;
+  
+    border-radius: 8px;
+  
+    background: white;
+  
+    color:
+      #475569;
+  
+    font-size: 9.5px;
+    font-weight: 600;
+  }
+  
+  
+  .exception-resolve-button:hover {
+    border-color:
+      #bbf7d0;
+  
+    background:
+      #f0fdf4;
+  
+    color:
+      #047857;
+  }
+  
+  
+  .exception-resolved-label {
+    display: inline-flex;
+    align-items: center;
+  
+    gap: 5px;
+  
+    color:
+      #059669;
+  
+    font-size: 10px;
+    font-weight: 600;
+  }
+  
+  
+  /* =========================================================
+     PAGINATION
+  ========================================================= */
+  
+  .exceptions-pagination {
+    min-height: 58px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 16px;
+  
+    padding:
+      0
+      18px;
+  
+    border-top:
+      1px solid
+      #edf1f6;
+  
+    background:
+      #fbfcfe;
+  
+    color:
+      #64748b;
+  
+    font-size: 10.5px;
+  }
+  
+  
+  .exceptions-pagination strong {
+    color:
+      #334155;
+  }
+  
+  
+  .exceptions-pagination-controls {
+    display: flex;
+    align-items: center;
+  
+    gap: 10px;
+  }
+  
+  
+  .exceptions-pagination-controls > span {
+    min-width: 110px;
+  
+    text-align: center;
+  }
+  
+  
+  .exceptions-pagination-controls button {
+    width: 34px;
+    height: 34px;
+  
+    display: grid;
+    place-items: center;
+  
+    border:
+      1px solid
+      #dfe5ee;
+  
+    border-radius: 8px;
+  
+    background: white;
+  
+    color:
+      #475569;
+  }
+  
+  
+  .exceptions-pagination-controls button:hover:not(:disabled) {
+    border-color:
+      #c7d2fe;
+  
+    color:
+      var(--primary);
+  
+    background:
+      #f8faff;
+  }
+  
+  
+  .exceptions-pagination-controls button:disabled {
+    cursor: default;
+  
+    opacity: 0.35;
+  }
+  
+  
+  /* =========================================================
+     EMPTY / LOADING
+  ========================================================= */
+  
+  .exceptions-empty-state {
+    min-height: 280px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 8px;
+  
+    color:
+      #8491a5;
+  
+    text-align: center;
+  
+    font-size: 11px;
+  }
+  
+  
+  .exceptions-empty-state svg {
+    color:
+      #6477df;
+  }
+  
+  
+  .exceptions-empty-state strong {
+    color:
+      #334155;
+  
+    font-size: 13px;
+  }
+  
+  
+  .exceptions-empty-state span {
+    color:
+      #94a3b8;
+  
+    font-size: 10.5px;
+  }
+  
+  
+  /* =========================================================
+     MODAL
+  ========================================================= */
+  
+  .exception-modal-backdrop {
+    position: fixed;
+    inset: 0;
+  
+    display: grid;
+    place-items: center;
+  
+    padding: 20px;
+  
+    background:
+      rgba(
+        15,
+        23,
+        42,
+        0.44
+      );
+  
+    backdrop-filter:
+      blur(5px);
+  
+    z-index: 500;
+  }
+  
+  
+  .exception-modal {
+    width:
+      min(
+        470px,
+        100%
+      );
+  
+    padding: 25px;
+  
+    border:
+      1px solid
+      #e1e6ef;
+  
+    border-radius: 18px;
+  
+    background: white;
+  
+    box-shadow:
+      0 24px 70px
+      rgba(
+        15,
+        23,
+        42,
+        0.22
+      );
+  }
+  
+  
+  .exception-modal-icon {
+    width: 43px;
+    height: 43px;
+  
+    display: grid;
+    place-items: center;
+  
+    margin-bottom: 14px;
+  
+    border-radius: 11px;
+  
+    background:
+      #ecfdf5;
+  
+    color:
+      #059669;
+  }
+  
+  
+  .exception-modal-copy > span {
+    color:
+      #5e6ee0;
+  
+    font-size: 9px;
+    font-weight: 700;
+  
+    letter-spacing:
+      0.6px;
+  
+    text-transform:
+      uppercase;
+  }
+  
+  
+  .exception-modal-copy h3 {
+    margin:
+      6px
+      0
+      0;
+  
+    font-size: 18px;
+  }
+  
+  
+  .exception-modal-copy p {
+    margin:
+      8px
+      0
+      17px;
+  
+    color:
+      #64748b;
+  
+    font-size: 11px;
+    line-height: 1.55;
+  }
+  
+  
+  .exception-modal textarea {
+    width: 100%;
+    min-height: 110px;
+  
+    resize: vertical;
+  
+    padding: 12px;
+  
+    color:
+      #334155;
+  
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  
+  
+  .exception-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+  
+    gap: 9px;
+  
+    margin-top: 15px;
+  }
+  
+  
+  .exception-modal-cancel,
+  .exception-modal-confirm {
+    min-height: 38px;
+  
+    padding:
+      0
+      14px;
+  
+    border-radius: 9px;
+  
+    font-size: 10px;
+    font-weight: 600;
+  }
+  
+  
+  .exception-modal-cancel {
+    border:
+      1px solid
+      #dfe5ee;
+  
+    background: white;
+  
+    color:
+      #64748b;
+  }
+  
+  
+  .exception-modal-confirm {
+    border: 0;
+  
+    background:
+      linear-gradient(
+        100deg,
+        #4f72ef,
+        #7858ef
+      );
+  
+    color: white;
+  
+    box-shadow:
+      0 6px 16px
+      rgba(
+        83,
+        103,
+        248,
+        0.18
+      );
+  }
+  
+  
+  .exception-modal-confirm:disabled {
+    cursor: wait;
+  
+    opacity: 0.6;
+  }
+  
+  
+  /* =========================================================
+     RESPONSIVE
+  ========================================================= */
+  
+  @media (
+    max-width: 1100px
+  ) {
+  
+    .exceptions-summary-grid {
+      grid-template-columns:
+        repeat(
+          2,
+          1fr
+        );
+    }
+  
+  
+    .exceptions-filter-panel {
+      grid-template-columns:
+        1fr
+        1fr
+        1fr;
+    }
+  
+  
+    .exceptions-search {
+      grid-column:
+        1 / -1;
+    }
+  }
+  
+  
+  @media (
+    max-width: 700px
+  ) {
+  
+    .exceptions-toolbar {
+      align-items: stretch;
+  
+      flex-direction:
+        column;
+    }
+  
+  
+    .exceptions-project-selector {
+      min-width: 0;
+    }
+  
+  
+    .exceptions-summary-grid {
+      grid-template-columns:
+        1fr;
+    }
+  
+  
+    .exceptions-filter-panel {
+      display: flex;
+  
+      flex-direction:
+        column;
+    }
+  
+  
+    .exceptions-filter-panel > select {
+      width: 100%;
+    }
+  
+  
+    .exceptions-list-heading {
+      align-items:
+        flex-start;
+  
+      flex-direction:
+        column;
+    }
+  
+  
+    .exceptions-pagination {
+      align-items:
+        flex-start;
+  
+      flex-direction:
+        column;
+  
+      padding:
+        14px
+        16px;
+    }
+  }
